@@ -161,5 +161,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias config='/usr/bin/git --git-dir=/home/ectos/.cfg/ --work-tree=/home/ectos'
-alias config='/usr/bin/git --git-dir=/home/ectos/.cfg/ --work-tree=/home/ectos'
+if [ -e $HOME/.bash_aliases ]; then
+    source $HOME/.bash_aliases
+fi
+
