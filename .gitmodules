@@ -1,0 +1,6 @@
+[submodule "tmux-sensible"]
+	path = tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible.git
+[submodule ".tmux/plugins/tmux-sensible"]
+	path = .tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible.git
