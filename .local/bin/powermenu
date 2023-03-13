@@ -5,9 +5,9 @@ chosen=$(printf "  Power Off\n  Restart\n  Suspend\n  Hibernate\n
 case "$chosen" in
 	"  Power Off") poweroff ;;
 	"  Restart") reboot ;;
-	"  Suspend") systemctl suspend-then-hibernate ;;
-	"  Hibernate") systemctl hibernate ;;
-	"  Log Out") bspc quit ;;
-	"  Lock") betterlockscreen -l ;;
+	"  Suspend") xfce4-session-logout --suspend;;
+	"  Hibernate") xfce4-session-logout --hibernate;;
+	"  Log Out") xfce4-session-logout --logout;;
+	"  Lock") xfce4-screensaver-command --lock;;
 	*) exit 1 ;;
 esac
