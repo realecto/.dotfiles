@@ -70,8 +70,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # CUSTOM KEYBINDING
-bindsym Shift+space exec rofi -show run
-bindsym Shift+l exec $HOME/.local/bin/powermenu
+bindsym Control+space exec rofi -show run
+bindsym Control+l exec $HOME/.local/bin/powermenu
 # start a terminal
 #bindsym $mod+Return exec kitty
 #bindsym $mod+Return exec alacritty
