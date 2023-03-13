@@ -61,36 +61,13 @@ fi
 # START KALI CONFIG VARIABLES
 PROMPT_ALTERNATIVE=twoline
 NEWLINE_BEFORE_PROMPT=yes
-# STOP KALI CONFIG VARIABLES
 
-if [ "$color_prompt" = yes ]; then
-    # override default virtualenv indicator in prompt
-    VIRTUAL_ENV_DISABLE_PROMPT=1
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
-    prompt_color='\[\033[;32m\]'
-    info_color='\[\033[1;34m\]'
-    prompt_symbol=㉿
-    if [ "$EUID" -eq 0 ]; then # Change prompt colors for root user
-        prompt_color='\[\033[;94m\]'
-        info_color='\[\033[1;31m\]'
-        # Skull emoji for root terminal
-        #prompt_symbol=💀
-    fi
-    case "$PROMPT_ALTERNATIVE" in
-        twoline)
-            PS1=$prompt_color'┌──${debian_chroot:+($debian_chroot)──}${VIRTUAL_ENV:+(\[\033[0;1m\]$(basename $VIRTUAL_ENV)'$prompt_color')}('$info_color'\u'$prompt_color')-[\[\033[0;1m\]\w'$prompt_color']\n'$prompt_color'└─'$info_color'\$\[\033[0m\] ';;
-        oneline)
-            PS1='${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV)) }${debian_chroot:+($debian_chroot)}'$info_color'\u@\h\[\033[00m\]:'$prompt_color'\[\033[01m\]\w\[\033[00m\]\$ ';;
-        backtrack)
-            PS1='${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV)) }${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ';;
-    esac
-    unset prompt_color
-    unset info_color
-    unset prompt_symbol
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+PS1='[\u \W]\$ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -156,6 +133,7 @@ if ! shopt -oq posix; then
 fi
 
 export PATH=$PATH:$HOME/bin
+export PATH=$HOME/.local/bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
